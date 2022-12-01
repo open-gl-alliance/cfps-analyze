@@ -3,3 +3,4 @@ dataset/**/*.dta.schemas.json
 dataset/**/*.dta.labels.json
 dataset/**/common.schemas.json
 **/__pycache__/
+*.pdf

@@ -9,10 +9,14 @@ def read_json(fp):
 
 def write_json(obj, fp):
     with open(fp, 'w', encoding="utf-8") as f:
+        # 通过 indent 设置缩进为 4
         json.dump(obj, f, ensure_ascii=False, indent=4)
 
 
 def require_python_310():
+    """
+    检查当前是否使用了 Python 3.10
+    """
     version = sys.version_info
     if version.major != 3 or version.minor < 10:
         print(

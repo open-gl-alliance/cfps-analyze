@@ -1,3 +1,7 @@
+"""
+执行交互式 Shell 的脚本，可以在这里利用 stata 浏览数据
+"""
+
 from utils import read_json, write_json
 from stata_converter import convert_sta_file_to_df
 import types
@@ -7,13 +11,16 @@ import matplotlib.pyplot as plt
 from functools import reduce
 import os
 
-from data_format import datafmt
-from constants import REGIONS, PROVS
+from data_format import datafmt # 导入各年表格的名称
+from constants import REGIONS, PROVS # 导入省代码到省份名的具体变量
 
 CFPS_SHELL_DATA_ROOT = os.environ.get('CFPS_SHELL_DATA_ROOT', '')
 
 
 def set_global(key, value):
+    """
+    将 key 设置为全局变量，值为 value
+    """
     globals()[key] = value
 
 
@@ -157,4 +164,4 @@ cfps = {}
 
 for year in datafmt:
     set_global(f"cfps{year}", make_data_obj(year, datafmt[year]))
-    cfps[year] = globals()[f"cfps{year}"]
+    cfps[year] = globals()[f"cfps{year}"] # 使得 cfps2010 和 cfps[2010] 均可以接受
